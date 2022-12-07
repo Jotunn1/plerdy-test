@@ -62,8 +62,20 @@
         display: none;
     }
 
+    header {
+        padding: 0 10px;
+    }
+
     header>.container {
         position: relative;
+    }
+
+    header>.container>.buttons>.burger-menu {
+        display: block;
+    }
+
+    header>.container>.buttons>:not(.burger-menu) {
+        display: none;
     }
 
     .mobile-menu {
@@ -73,15 +85,19 @@
         right: 0;
         width: 100vw;
         height: calc(100vh - var(--header-height));
-        transition: opacity 0.5s ease-in;
+        transition: opacity var(--modal-transition-time) ease-in;
         display: grid;
         place-items: center;
-
     }
 
     .mobile-menu.closed {
         opacity: 0;
         pointer-events: none;
+    }
+
+    .mobile-menu.open {
+        opacity: 1;
+        pointer-events: all;
     }
 
     .mobile-menu>nav {
@@ -93,23 +109,6 @@
 
     .mobile-menu>nav>* {
         font-size: 40px;
-    }
-
-    .mobile-menu.open {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    header {
-        padding: 0 10px;
-    }
-
-    header>.container>.buttons>.burger-menu {
-        display: block;
-    }
-
-    header>.container>.buttons>:not(.burger-menu) {
-        display: none;
     }
 
     section.about {
@@ -125,7 +124,7 @@
 
     .about>.content>.text {
         grid-gap: 0;
-        margin-bottom: 20px;
+        margin: 0 0 20px;
     }
 
     .about>.content>.text>div:first-of-type {
@@ -167,6 +166,19 @@
         text-align: center;
     }
 
+    .partners {
+        flex-wrap: wrap;
+        gap: 18px;
+        justify-content: center;
+        margin-top: 14px;
+    }
+
+    .partner-wrapper {
+        width: calc((100% - 36px) /3);
+        display: flex;
+        justify-content: center;
+    }
+
     section.reasons {
         margin: 40px 0 20px;
         overflow: hidden;
@@ -189,7 +201,6 @@
         margin: 20% 0 0 20%;
     }
 
-
     .swiper-pagination {
         display: block;
         bottom: -5px !important;
@@ -207,6 +218,7 @@
         font-size: 12px;
         line-height: 14px;
         text-align: center;
+        max-width: 100%;
     }
 
     footer>div {

@@ -1,9 +1,16 @@
 body {
+    /* i didn't use BEM, because it doesnt give too much advantage with pure css */
     --main-bg-color: #F5F5F5;
     --about-bg-color: #E2F2FF;
     --cta-color: #5D78FF;
     --close-btn-color: #F3F4F6;
     --cta-inactive-color: #AED1FF;
+    --main-text-color: #001E41;
+    --slider-card-bg: #F8F8FA;
+    --input-border-color: #D5D5D6;
+    --header-border-color: #E5E5E5;
+    --slider-circle-bg: #E3EEFF;
+
     --cta-radius: 8px;
     --about-bg-radius: 10px;
     --modal-radius: 15px;
@@ -11,17 +18,16 @@ body {
     --close-btn-size: 30px;
     --input-height: 37px;
     --slider-card-height: 372px;
-    --main-text-color: #001E41;
-    --slider-card-bg: #F8F8FA;
-    --input-border-color: #D5D5D6;
-    --header-border-color: #E5E5E5;
-    --slider-circle-bg: #E3EEFF;
     --round-btn-size: 28px;
     --header-height: 77px;
     --base-time: 0.2s;
     --modal-transition-time: 0.5s;
     background-color: var(--main-bg-color);
     overflow-x: hidden;
+}
+
+body.stop-scroll {
+    overflow: hidden;
 }
 
 .container {
@@ -61,10 +67,8 @@ nav {
     display: none;
 }
 
-.logo,
-nav>li,
-.btn {
-    cursor: pointer;
+main {
+    padding-top: var(--header-height);
 }
 
 section.about {
@@ -76,9 +80,6 @@ section.about {
     justify-content: space-between;
 }
 
-section.reasons {
-    margin: 100px 0 40px;
-}
 
 .about>.content {
     width: 53%;
@@ -91,7 +92,6 @@ section.reasons {
 
 .about>.image-wrapper>.graph {
     position: absolute;
-    /* box-shadow: 0px 3.59414px 17.9707px rgba(0, 0, 0, 0.08); */
     opacity: 0;
     animation: graph-show 0.8s ease-in forwards;
 }
@@ -106,15 +106,63 @@ section.reasons {
     width: 44.3%;
     top: 21%;
     left: 68.2%;
-
     animation-delay: 0.3s;
 }
 
 .about>.image-wrapper>.graph-3 {
     width: 44.6%;
     top: 51.8%;
-    left: -25.45%;
+    left: -16%;
     animation-delay: 0.6s;
+}
+
+.content>.text {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 16px;
+    margin: 0 40px 60px 0;
+}
+
+.text>div>p:first-of-type {
+    margin-bottom: 6px;
+}
+
+.image-wrapper {
+    display: grid;
+    place-items: center;
+}
+
+.partners {
+    width: 100%;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.partners>.partners-wrapper {
+    width: 100%;
+}
+
+.trusted {
+    margin-bottom: 20px;
+}
+
+.reasons>.title-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.title-row>.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+section.reasons {
+    margin: 100px 0 40px;
 }
 
 .slider {
@@ -159,60 +207,10 @@ section.reasons {
     display: none;
 }
 
-.content>.text {
-    display: flex;
-    flex-direction: column;
-    grid-gap: 16px;
-    margin-bottom: 60px;
-}
-
-.text>div>p:first-of-type {
-    margin-bottom: 6px;
-}
-
-.image-wrapper {
-    display: grid;
-    place-items: center;
-}
-
-.partners {
-    width: 100%;
-    margin-top: 6px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.partners>.partners-wrapper {
-    width: 100%;
-}
-
-.trusted {
-    margin-bottom: 20px;
-}
-
-.partners {
-    flex-wrap: wrap;
-    gap: 18px;
-    justify-content: center;
-    margin-top: 14px;
-}
-
-.partner-wrapper {
-    width: calc((100% - 36px) /3);
-}
-
-.reasons>.title-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.title-row>.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+.logo,
+nav>li,
+.btn {
+    cursor: pointer;
 }
 
 .btn {
@@ -246,10 +244,6 @@ section.reasons {
     width: var(--round-btn-size);
     display: grid;
     place-items: center;
-}
-
-main {
-    padding-top: var(--header-height);
 }
 
 footer {
@@ -433,19 +427,13 @@ footer>p {
     }
 }
 
-.iti--separate-dial-code .iti__selected-flag {
-    background-color: transparent;
-}
-
-.iti--separate-dial-code .iti__selected-flag:hover {
-    background-color: transparent;
-}
-
-.iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
-    background-color: transparent;
-}
-
 .iti__country {
     display: flex;
     align-items: center;
+}
+
+.iti--separate-dial-code .iti__selected-flag,
+.iti--separate-dial-code .iti__selected-flag:hover,
+.iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+    background-color: transparent;
 }

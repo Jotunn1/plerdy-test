@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const body = document.querySelector('body')
     const closeModalBtn = document.getElementById('close-modal-btn');
     const modal = document.getElementById('modal');
     const openModalBtns = document.getElementsByClassName('open-modal');
@@ -9,17 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobileMenu = document.querySelector('.mobile-menu')
     let dialCode = 0;
 
-    menuBtn.addEventListener('click', () => {
+    menuBtn.addEventListener('click', () => mobileMenuToggle())
+    const mobileMenuToggle = () => {
         if (mobileMenu.classList.contains('closed')) {
             mobileMenu.classList.remove('closed')
-            mobileMenu.classList.add('open')
+            mobileMenu.classList.add('open');
+            body.classList.add('stop-scroll')
         }
         else {
             mobileMenu.classList.remove('open')
             mobileMenu.classList.add('closed')
+            body.classList.remove('stop-scroll')
         }
-
-    })
+    }
     const setDialCode = () => {
         setTimeout(() => {
             //hack that i need because dial code select are made with scripts after first DOM render, and i need to select it asynchronously
@@ -56,19 +59,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else console.log(isObjVerified, 'isObjVerified')
     }
-    const closeModal = () => modal.classList.add('hidden');
+    const closeModal = () => {
+        modal.classList.add('hidden');
+        body.classList.remove('stop-scroll')
+    }
     const openModal = () => {
         if (modal.classList.contains('hidden')) {
-            modal.classList.remove('hidden')
+            modal.classList.remove('hidden');
+
         }
-        modal.classList.add('active')
+        modal.classList.add('active');
+        body.classList.add('stop-scroll')
     }
     Array.from(openModalBtns).forEach(element => {
         element.addEventListener('click', () => openModal())
     });
     closeModalBtn.addEventListener('click', () => closeModal());
     const verifyInput = (input) => {
-        console.log()
         if (input.value === '') {
             input.closest('label').classList.add('error')
         }
